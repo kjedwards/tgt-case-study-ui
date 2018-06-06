@@ -1,0 +1,9 @@
+# This is a gitignore file for React
+
+# Users will run npm install to get these
+node_modules
+
+
+#other
+.DS_Store
+.idea
