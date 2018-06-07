@@ -1,7 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom'
 
-// main app
-import App from './containers/App';
+import App from './containers/App'
+import Reviews from './containers/Reviews'
 
-ReactDOM.render(<App />, document.getElementById('app'))
+
+ReactDOM.render(
+  <BrowserRouter>
+    <div>
+      <Route exact path="/" component={App} />
+      <Route path="/list" component={Reviews} />
+    </div>
+   </BrowserRouter>,
+  document.getElementById('#app')
+);
