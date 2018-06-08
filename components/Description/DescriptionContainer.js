@@ -1,7 +1,15 @@
+/* ----------------------------------------------
+ * Container for the product information
+ *
+ * Author: Kaylee Edwards (z0027hd)
+ * Last Modified: 06/08/2018
+ * Last Modified By: Kaylee Edwards (z0027hd)
+ * --------------------------------------------*/
+
 import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
 
-import { sizes } from '../../constants/DeviceWidth'
+import { SIZES } from '../../constants/DeviceWidth'
 
 import Price from './Price'
 import Promotions from './Promotions'
@@ -20,7 +28,7 @@ const DescContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media(max-width: ${sizes.tablet}) {
+  @media(max-width: ${SIZES.TABLET}) {
     order: 1;
   }
 `

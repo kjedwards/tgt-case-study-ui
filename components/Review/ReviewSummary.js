@@ -1,7 +1,13 @@
+/* ----------------------------------------------
+ * Component to contain all but the overall stars
+ *
+ * Author: Kaylee Edwards (z0027hd)
+ * Last Modified: 06/08/2018
+ * Last Modified By: Kaylee Edwards (z0027hd)
+ * --------------------------------------------*/
+
 import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
-
-import { sizes } from '../../constants/DeviceWidth'
 
 import ReviewHeader from './ReviewHeader'
 import Review from './Review'

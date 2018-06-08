@@ -1,3 +1,11 @@
+/* ----------------------------------------------
+ * Component to display all images and title
+ *
+ * Author: Kaylee Edwards (z0027hd)
+ * Last Modified: 06/08/2018
+ * Last Modified By: Kaylee Edwards (z0027hd)
+ * --------------------------------------------*/
+
 import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
 
@@ -5,7 +13,7 @@ import ProductTitle from './ProductTitle'
 import ProductImage from './ProductImage'
 import ProductCarousel from './ProductCarousel'
 
-import { sizes } from '../../constants/DeviceWidth'
+import { SIZES } from '../../constants/DeviceWidth'
 
 const ImgContainer = styled.div`
   background-color: red;
@@ -18,11 +26,11 @@ const ImgContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-  @media(max-width: ${sizes.laptop}) {
+  @media(max-width: ${SIZES.LAPTOP}) {
       max-width: 400px;
   }
 
-  @media(max-width: ${sizes.desktop}) {
+  @media(max-width: ${SIZES.DESKTOP}) {
       max-width: 600px;
   }
 `
