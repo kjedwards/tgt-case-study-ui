@@ -4,7 +4,7 @@
   "description": "React front end for case study",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "./node_modules/.bin/webpack-dev-server --config ./webpack/webpack.dev.config.js"
   },
   "repository": {
@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/kjedwards/tgt-case-study-ui#readme",
   "dependencies": {
+    "jest": "^23.1.0",
     "less": "^3.0.4",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-test-renderer": "^16.4.0",
     "redux": "^4.0.0",
     "styled-components": "^3.3.2",
     "webpack": "^4.11.1",

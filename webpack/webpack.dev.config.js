@@ -8,6 +8,11 @@ module.exports = {
     entry: [
         path.join(parentDir, 'index.js')
     ],
+    resolve: {
+      alias: {
+        root: path.resolve('./'),
+      }
+    },
     module: {
         rules: [{
             test: /\.(js|jsx)$/,

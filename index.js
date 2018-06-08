@@ -10,8 +10,8 @@ ReactDOM.render(
   <BrowserRouter>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/list" component={Reviews} />
+      <Route path="/reviews" component={Reviews} />
     </div>
    </BrowserRouter>,
-  document.getElementById('#app')
+  document.getElementById('app')
 );
