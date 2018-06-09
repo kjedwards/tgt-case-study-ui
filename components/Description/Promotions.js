@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
 
-import '../../node_modules/font-awesome/css/font-awesome.min.css'
+import 'font-awesome/css/font-awesome.min.css'
 
 const Container = styled.div`
   width: 100%;

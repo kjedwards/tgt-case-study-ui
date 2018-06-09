@@ -11,17 +11,31 @@ import styled, {css} from 'styled-components'
 
 
 const Carousel = styled.div`
-  background-color: black;
   width: 80%;
   height: 20%;
   margin-bottom: 20px;
+  display: flex;
+`
+const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  display: block;
 `
 
-
 export default class ProductCarousel extends Component {
-    render () {
-        return (
-            <Carousel></Carousel>
-        )
-    }
+  render () {
+    return (
+        <Carousel>
+
+          {this.props.images.map((dataVal, i) =>
+              <div key={i}>
+                <Image src={dataVal.image} />
+              </div>
+          )}
+
+
+        </Carousel>
+
+    )
+  }
 }

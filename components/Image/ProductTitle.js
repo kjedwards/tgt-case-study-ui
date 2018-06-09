@@ -9,8 +9,8 @@
 import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
 
+
 const ImageTitle = styled.div`
-  color: white;
   font-size: 24px;
   text-align: center;
   padding: 10px;
@@ -21,7 +21,7 @@ const ImageTitle = styled.div`
 export default class ProductTitle extends Component {
     render () {
         return (
-            <ImageTitle>This is a placeholder title</ImageTitle>
+            <ImageTitle>{this.props.title}</ImageTitle>
         )
     }
 }
