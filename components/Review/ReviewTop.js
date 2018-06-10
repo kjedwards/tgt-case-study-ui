@@ -8,18 +8,61 @@
 
 import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
+import { Link } from 'react-router-dom'
+
+import Stars from './Stars'
 
 const RvwTop = styled.div`
-  background-color: grey;
   height: 50px;
   width: 100%;
 `
+const StarContainer = styled.div`
+  float: left;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  font-size: 18px;
+`
 
+const Text = styled.div`
+  font-weight: bold;
+  font-size: 11px;
+  margin: 10px;
+  text-decoration: none;
+`
+
+const LinkDiv = styled.div`
+  float: right;
+  display: flex;
+  align-items: center;
+  margin: 20px
+  margin-right: 5px;
+`
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+
+    &:focus, &:hover, &:active {
+        text-decoration: none;
+        color: red;
+    }
+`;
 
 class ReviewTop extends Component {
     render () {
+      console.log(this.props.overallRating.rating)
       return(
-        <RvwTop></RvwTop>
+        <RvwTop>
+          <StarContainer>
+            <Stars rating={this.props.overallRating.rating}></Stars>
+            <Text>overall</Text>
+          </StarContainer>
+          <LinkDiv>
+            <Text>
+              <StyledLink to='/reviews'>view all reviews</StyledLink>
+            </Text>
+          </LinkDiv>
+        </RvwTop>
       )
     }
 }

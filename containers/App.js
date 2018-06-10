@@ -22,6 +22,7 @@ import Store from '../store'
 
 import { getImages } from '../actions/ImagesActionCreator'
 import { getMiscAttr } from '../actions/MiscAttrActionCreator'
+import { getOverallReview } from '../actions/OverallReviewActionCreator'
 
 const store = Store()
 
@@ -52,7 +53,8 @@ const mapStateToProps = (state) => {
     store: store,
     mainImage: state.images.mainImage,
     alternateImages: state.images.alternateImages,
-    title: state.misc.title
+    title: state.misc.title,
+    overallRating: state.overall
   }
 }
 
@@ -60,19 +62,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = function(dispatch) {
   return {
     getImages: bindActionCreators(getImages, dispatch),
-    getMiscAttr: bindActionCreators(getMiscAttr, dispatch)
+    getMiscAttr: bindActionCreators(getMiscAttr, dispatch),
+    getOverallReview: bindActionCreators(getOverallReview, dispatch)
   }
 }
 
 class App extends Component {
     constructor(props) {
       super(props)
-      this.state = {  images: {} }
     }
 
     componentWillMount() {
       this.props.getImages()
       this.props.getMiscAttr()
+      this.props.getOverallReview()
     }
 
 
@@ -84,7 +87,9 @@ class App extends Component {
                             altImages={this.props.alternateImages}
                             title={this.props.title}>
             </ImageContainer>
-            <ReviewContainer></ReviewContainer>
+            <ReviewContainer overallRating={this.props.overallRating}>
+
+            </ReviewContainer>
             <DescriptionContainer></DescriptionContainer>
           </AppContainer>
         </Provider>

@@ -15,7 +15,6 @@ import ReviewTop from './ReviewTop'
 import ReviewSummary from './ReviewSummary'
 
 const RvwContainer = styled.div`
-  background-color: green;
   width: 40%;
   min-width: 400px;
   order: 1;
@@ -33,7 +32,7 @@ class ReviewContainer extends Component {
     render () {
       return(
         <RvwContainer>
-          <ReviewTop></ReviewTop>
+          <ReviewTop overallRating={this.props.overallRating}></ReviewTop>
           <ReviewSummary></ReviewSummary>
         </RvwContainer>
       )
