@@ -8,54 +8,59 @@
  * ----------------------------------- */
 
  import {
-   GET_MISC_ATTR_BEGIN,
-   GET_MISC_ATTR_SUCCESS,
-   GET_MISC_ATTR_FAILURE
+   GET_OFFERS_BEGIN,
+   GET_OFFERS_SUCCESS,
+   GET_OFFERS_FAILURE
  } from '../constants/ActionTypes'
 
  const initialState = {
    loading: true,
    error: null,
-   title: ''
+   formattedPriceValue: '',
+   priceQualifier: ''
  }
 
- export default function MiscAttrReducer(state = initialState, action) {
+ export default function OffersReducer(state = initialState, action) {
     switch(action.type) {
-      case GET_MISC_ATTR_BEGIN: {
-        console.log(':::GET MISC ATTR BEGIN')
+      case GET_OFFERS_BEGIN: {
+        console.log(':::GET OFFERS BEGIN')
         return {
           ...state,
           loading: true,
           error: null,
-          title: ''
+          formattedPriceValue: '',
+          priceQualifier: ''
         }
       }
-      case GET_MISC_ATTR_SUCCESS: {
-        console.log(':::GET MISC ATTR SUCCESS')
+      case GET_OFFERS_SUCCESS: {
+        console.log(':::GET OFFERS SUCCESS')
         if(action.payload === undefined) {
           return {
             ...state,
             loading: false,
             error: null,
-            title: ''
+            formattedPriceValue: '',
+            priceQualifier: ''
           }
         } else {
           return {
             ...state,
             loading: false,
             error: null,
-            title: action.payload.miscAttr.title
+            formattedPriceValue: action.payload.offers[0].OfferPrice[0].formattedPriceValue,
+            priceQualifier: action.payload.offers[0].OfferPrice[0].priceQualifier
           }
         }
       }
-      case GET_MISC_ATTR_FAILURE: {
-        console.log(':::GET MISC ATTR FAILURE')
+      case GET_OFFERS_FAILURE: {
+        console.log(':::GET OFFERS FAILURE')
         console.log(action.payload.error)
           return {
             ...state,
             loading: false,
             error: action.payload.error,
-            title: ''
+            formattedPriceValue: '',
+            priceQualifier: ''
         }
       }
       default:

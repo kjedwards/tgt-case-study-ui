@@ -48,7 +48,6 @@
       }
       case GET_PROS_SUCCESS: {
         console.log(':::GET PROS SUCCESS')
-        console.log(action.payload)
         if(action.payload === undefined) {
           return {
             ...state,

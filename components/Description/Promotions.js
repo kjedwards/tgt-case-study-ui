@@ -44,14 +44,12 @@ class Promotions extends Component {
     render () {
       return(
         <Container>
-          <Promotion>
-            <Tag><i className='fa fa-tag'/></Tag>
-            <Text>Wow, what a deal!</Text>
-          </Promotion>
-          <Promotion>
-            <Tag><i className='fa fa-tag'/></Tag>
-            <Text>Wow, what a deal!</Text>
-          </Promotion>
+          {this.props.promos.promos.map((dataVal, i) =>
+            <Promotion key={i}>
+              <Tag><i className='fa fa-tag'/></Tag>
+              <Text>{dataVal.Description[0].shortDescription}</Text>
+            </Promotion>
+          )}
         </Container>
       )
     }

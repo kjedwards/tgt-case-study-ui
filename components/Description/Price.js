@@ -21,6 +21,8 @@ const Number = styled.div`
 `
 
 const Subtext = styled.div`
+  margin-top: 16px;
+  margin-left: 3px;
   font-size: 8px;
 
 `
@@ -30,8 +32,8 @@ class Price extends Component {
     render () {
       return(
         <Container>
-          <Number>999.99</Number>
-          <Subtext>online price</Subtext>
+          <Number>{this.props.offer.formattedPriceValue}</Number>
+          <Subtext>{this.props.offer.priceQualifier.toLowerCase()}</Subtext>
         </Container>
       )
     }

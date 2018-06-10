@@ -20,7 +20,6 @@ import ShareContainer from './ShareContainer'
 import ProductHighlights from './ProductHighlights'
 
 const DescContainer = styled.div`
-  background-color: #d6def7;
   min-width: 400px;
   max-width: 500px;
   width: 50%;
@@ -38,8 +37,8 @@ class DescriptionContainer extends Component {
     render () {
       return(
         <DescContainer>
-          <Price></Price>
-          <Promotions></Promotions>
+          <Price offer={this.props.offer}></Price>
+          <Promotions promos={this.props.promo}></Promotions>
           <Quantity></Quantity>
           <BuyButtonContainer></BuyButtonContainer>
           <Returns></Returns>

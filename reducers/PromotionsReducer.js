@@ -8,54 +8,54 @@
  * ----------------------------------- */
 
  import {
-   GET_MISC_ATTR_BEGIN,
-   GET_MISC_ATTR_SUCCESS,
-   GET_MISC_ATTR_FAILURE
+   GET_PROMOTIONS_BEGIN,
+   GET_PROMOTIONS_SUCCESS,
+   GET_PROMOTIONS_FAILURE
  } from '../constants/ActionTypes'
 
  const initialState = {
    loading: true,
    error: null,
-   title: ''
+   promos: []
  }
 
- export default function MiscAttrReducer(state = initialState, action) {
+ export default function PromotionsReducer(state = initialState, action) {
     switch(action.type) {
-      case GET_MISC_ATTR_BEGIN: {
-        console.log(':::GET MISC ATTR BEGIN')
+      case GET_PROMOTIONS_BEGIN: {
+        console.log(':::GET PROMOTIONS BEGIN')
         return {
           ...state,
           loading: true,
           error: null,
-          title: ''
+          promos: []
         }
       }
-      case GET_MISC_ATTR_SUCCESS: {
-        console.log(':::GET MISC ATTR SUCCESS')
+      case GET_PROMOTIONS_SUCCESS: {
+        console.log(':::GET PROMOTIONS SUCCESS')
         if(action.payload === undefined) {
           return {
             ...state,
             loading: false,
             error: null,
-            title: ''
+            promos: []
           }
         } else {
           return {
             ...state,
             loading: false,
             error: null,
-            title: action.payload.miscAttr.title
+            promos: action.payload.promotions
           }
         }
       }
-      case GET_MISC_ATTR_FAILURE: {
-        console.log(':::GET MISC ATTR FAILURE')
+      case GET_PROMOTIONS_FAILURE: {
+        console.log(':::GET PROMOTIONS FAILURE')
         console.log(action.payload.error)
           return {
             ...state,
             loading: false,
             error: action.payload.error,
-            title: ''
+            promos: []
         }
       }
       default:

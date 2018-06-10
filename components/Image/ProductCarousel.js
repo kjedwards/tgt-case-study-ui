@@ -15,24 +15,26 @@ import { SIZES } from '../../constants/DeviceWidth'
 const CarouselContainer = styled.div`
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   min-height: 210px;
 `
 const Carousel = styled.div`
   position: relative;
+  width: 350px;
+  height 100px;
 `
 
 const Image = styled.img`
+  width: 100px;
   height: 100px;
 `
 
 const Slides = styled.ul`
-  ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
-  }
+    display: flex;
 `
 
 const Slide = styled.li`
@@ -42,15 +44,6 @@ const Slide = styled.li`
   max-width: 900px;
   list-style-type: none;
   text-align: center;
-
-  @media (max-width: ${SIZES.DESKTOP}) {
-    padding-right: 60px;
-    padding-left: 60px;
-  }
-
-  &--active {
-    display: block;
-  }
 `
 
 const Content = styled.div`
@@ -75,9 +68,24 @@ const Arrow = styled.a`
     opacity: .5;
   }
 `
+
+//special styles
 var currentSlide = {
     display: 'block'
 }
+
+var notCurrentSlide = {
+    display: 'none'
+}
+
+var left = {
+    left: '0'
+}
+
+var right = {
+  right: '0'
+}
+
 
 class ProductCarousel extends Component {
   constructor(props) {
@@ -94,10 +102,8 @@ class ProductCarousel extends Component {
   //Decrement current index- loop if needed
   prevSlide(e) {
     e.preventDefault()
-
     let index = this.state.currentIndex
-    let { slides } = this.props.images
-    let slidesLength = slides.length
+    let slidesLength = this.props.images.length
 
     if (index < 1) {
       index = slidesLength
@@ -115,7 +121,6 @@ class ProductCarousel extends Component {
     e.preventDefault()
 
     let index = this.state.currentIndex
-    let { slides } = this.props.images
     let slidesLength = slides.length - 1
 
     if (index === slidesLength) {
@@ -133,8 +138,7 @@ class ProductCarousel extends Component {
     return (
         <CarouselContainer>
           <Carousel>
-            {/* It says I need to wrap this in a surrounding element, but I did????? */}
-            <LeftArrow onClick={e => this.prevSlide(e)>
+            <LeftArrow onClick={e => this.prevSlide(e)}>
                 <i className='fa fa-chevron-left' />
             </LeftArrow>
             <Slides>
@@ -142,13 +146,14 @@ class ProductCarousel extends Component {
                       <CarouselSlide  key={i}
                                       index={i}
                                       activeIndex={this.state.currentIndex}
+                                      length={this.props.images.length}
                                       slide={dataVal}>
                       </CarouselSlide>
                 )}
             </Slides>
-            <RightArrow onClick={e => this.prevSlide(e)>
+            <RightArrow onClick={e => this.prevSlide(e)}>
                 <i className='fa fa-chevron-right' />
-            </LeftArrow>
+            </RightArrow>
           </Carousel>
         </CarouselContainer>
 
@@ -160,7 +165,7 @@ class LeftArrow extends Component {
   render() {
     return (
       <div>
-        <Arrow onClick={this.props.onClick}>
+        <Arrow onClick={this.props.onClick} style={left}>
           <span className="fa fa-chevron-left" />
         </Arrow>
       </div>
@@ -172,7 +177,7 @@ class RightArrow extends Component {
   render() {
     return (
       <div>
-        <Arrow onClick={this.props.onClick}>
+        <Arrow onClick={this.props.onClick} style={right}>
           <span className="fa fa-chevron-right" />
         </Arrow>
       </div>
@@ -182,15 +187,21 @@ class RightArrow extends Component {
 
 class CarouselSlide extends Component {
   render() {
+    console.log(this.props)
     return (
       <Slide
-        className={
-          this.props.index == this.props.activeIndex
-            ? 'currentSlide'
-            : ''
+        style={ this.props.index == this.props.activeIndex
+                  || this.props.index == this.props.activeIndex - 1
+                  || this.props.index == this.props.activeIndex + 1
+                  || (this.props.activeIndex == 0 && this.props.index == this.props.length - 1)
+                  || (this.props.activeIndex == this.props.length - 1 && this.props.index == 0)
+            ? currentSlide
+            : notCurrentSlide
         }>
         <Content>
-          <Image src={this.props.url}></Image>
+          <Image src={this.props.slide.image}>
+
+          </Image>
         </Content>
       </Slide>
     );

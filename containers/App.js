@@ -25,6 +25,8 @@ import { getMiscAttr } from '../actions/MiscAttrActionCreator'
 import { getOverallReview } from '../actions/OverallReviewActionCreator'
 import { getPros } from '../actions/ProsActionCreator'
 import { getCons } from '../actions/ConsActionCreator'
+import { getOffers } from '../actions/OffersActionCreator'
+import { getPromotions } from '../actions/PromotionsActionCreator'
 
 
 const store = Store()
@@ -59,7 +61,9 @@ const mapStateToProps = (state) => {
     title: state.misc.title,
     overallRating: state.overall,
     pro: state.pro,
-    con: state.con
+    con: state.con,
+    offer: state.offers,
+    promos: state.promos
   }
 }
 
@@ -70,7 +74,9 @@ const mapDispatchToProps = function(dispatch) {
     getMiscAttr: bindActionCreators(getMiscAttr, dispatch),
     getOverallReview: bindActionCreators(getOverallReview, dispatch),
     getPros: bindActionCreators(getPros, dispatch),
-    getCons: bindActionCreators(getCons, dispatch)
+    getCons: bindActionCreators(getCons, dispatch),
+    getOffers: bindActionCreators(getOffers, dispatch),
+    getPromotions: bindActionCreators(getPromotions, dispatch)
   }
 }
 
@@ -85,6 +91,8 @@ class App extends Component {
       this.props.getOverallReview()
       this.props.getPros()
       this.props.getCons()
+      this.props.getOffers()
+      this.props.getPromotions()
     }
 
 
@@ -101,7 +109,10 @@ class App extends Component {
                               pro={this.props.pro}
                               con = {this.props.con}>
             </ReviewContainer>
-            <DescriptionContainer></DescriptionContainer>
+            <DescriptionContainer offer={this.props.offer}
+                                  promo={this.props.promos}>
+
+            </DescriptionContainer>
           </AppContainer>
         </Provider>
         )
