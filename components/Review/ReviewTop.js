@@ -50,7 +50,6 @@ const StyledLink = styled(Link)`
 
 class ReviewTop extends Component {
     render () {
-      console.log(this.props.overallRating.rating)
       return(
         <RvwTop>
           <StarContainer>

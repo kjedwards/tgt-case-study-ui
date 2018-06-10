@@ -27,7 +27,7 @@ class ConContainer extends Component {
     render () {
       return(
         <Container>
-          <Header>Con</Header>
+          <Header>CON</Header>
           <Content>most helpful 1-2 star review</Content>
         </Container>
       )

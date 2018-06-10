@@ -38,21 +38,33 @@ const ReviewFooter = styled.div`
   margin-left: 8px;
 `
 
+const Name = styled.a`
+  color: #6994c1;
+  margin-top: 5px;
+  margin-right: 5px;
+`
+
+const Date = styled.div`
+
+`
+
 class Review extends Component {
     render () {
+
       return(
         <Container>
           <StarContainer>
-            <Stars></Stars>
+            <Stars rating={this.props.review.data.overallRating}></Stars>
           </StarContainer>
           <ReviewTitle>
-            Test Title
+            {this.props.review.data.title}
           </ReviewTitle>
           <ReviewBody>
-            This product is awesome and perfect and I love it.
+            {this.props.review.data.review}
           </ReviewBody>
           <ReviewFooter>
-            Kaylee June 08, 2018
+            <Name>{this.props.review.data.screenName}</Name>
+            <Date>{this.props.review.data.datePosted}</Date>
           </ReviewFooter>
         </Container>
       )

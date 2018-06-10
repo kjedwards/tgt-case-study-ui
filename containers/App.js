@@ -23,6 +23,9 @@ import Store from '../store'
 import { getImages } from '../actions/ImagesActionCreator'
 import { getMiscAttr } from '../actions/MiscAttrActionCreator'
 import { getOverallReview } from '../actions/OverallReviewActionCreator'
+import { getPros } from '../actions/ProsActionCreator'
+import { getCons } from '../actions/ConsActionCreator'
+
 
 const store = Store()
 
@@ -30,7 +33,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 800px;
+  max-height: 900px;
   max-width: 1600px;
   margin: 10px;
   justify-content: flex-start;
@@ -54,7 +57,9 @@ const mapStateToProps = (state) => {
     mainImage: state.images.mainImage,
     alternateImages: state.images.alternateImages,
     title: state.misc.title,
-    overallRating: state.overall
+    overallRating: state.overall,
+    pro: state.pro,
+    con: state.con
   }
 }
 
@@ -63,7 +68,9 @@ const mapDispatchToProps = function(dispatch) {
   return {
     getImages: bindActionCreators(getImages, dispatch),
     getMiscAttr: bindActionCreators(getMiscAttr, dispatch),
-    getOverallReview: bindActionCreators(getOverallReview, dispatch)
+    getOverallReview: bindActionCreators(getOverallReview, dispatch),
+    getPros: bindActionCreators(getPros, dispatch),
+    getCons: bindActionCreators(getCons, dispatch)
   }
 }
 
@@ -76,10 +83,13 @@ class App extends Component {
       this.props.getImages()
       this.props.getMiscAttr()
       this.props.getOverallReview()
+      this.props.getPros()
+      this.props.getCons()
     }
 
 
     render () {
+      console.log(this.props)
         return (
           <Provider store={store}>
           <AppContainer>
@@ -87,8 +97,9 @@ class App extends Component {
                             altImages={this.props.alternateImages}
                             title={this.props.title}>
             </ImageContainer>
-            <ReviewContainer overallRating={this.props.overallRating}>
-
+            <ReviewContainer  overallRating={this.props.overallRating}
+                              pro={this.props.pro}
+                              con = {this.props.con}>
             </ReviewContainer>
             <DescriptionContainer></DescriptionContainer>
           </AppContainer>

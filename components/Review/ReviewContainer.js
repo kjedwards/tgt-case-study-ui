@@ -17,6 +17,7 @@ import ReviewSummary from './ReviewSummary'
 const RvwContainer = styled.div`
   width: 40%;
   min-width: 400px;
+  max-width: 500px;
   order: 1;
   display: flex;
   flex-wrap: wrap;
@@ -29,11 +30,12 @@ const RvwContainer = styled.div`
 
 
 class ReviewContainer extends Component {
+
     render () {
       return(
         <RvwContainer>
           <ReviewTop overallRating={this.props.overallRating}></ReviewTop>
-          <ReviewSummary></ReviewSummary>
+          <ReviewSummary pro={this.props.pro} con={this.props.con}></ReviewSummary>
         </RvwContainer>
       )
     }

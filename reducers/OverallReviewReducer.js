@@ -31,7 +31,6 @@
       }
       case GET_OVERALL_REVIEW_SUCCESS: {
         console.log(':::GET OVERALL REVIEWS SUCCESS')
-        console.log(action.payload)
         if(action.payload === undefined) {
           return {
             ...state,

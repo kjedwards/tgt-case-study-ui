@@ -27,7 +27,7 @@ class ProContainer extends Component {
     render () {
       return(
         <Container>
-          <Header>Pro</Header>
+          <Header>PRO</Header>
           <Content>most helpful 4-5 star review</Content>
         </Container>
       )
