@@ -15,7 +15,7 @@ const ImageCont = styled.div`
   justify-content: center;
   width: 100%;
   height: 60%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
 
 const Image = styled.img`

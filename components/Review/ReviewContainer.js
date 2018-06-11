@@ -19,10 +19,14 @@ const RvwContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  max-width: 500px;
+  max-width: 450px;
 
   @media(max-width: ${SIZES.TABLET}) {
     order: 2;
+  }
+
+  @media(max-width: ${SIZES.MOBILE_SMALL}){
+    max-width: 325px;
   }
 `
 

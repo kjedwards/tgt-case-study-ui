@@ -19,7 +19,6 @@ const CarouselContainer = styled.div`
 
 const Carousel = styled.div`
   position: relative;
-  width: 350px;
   height: 100px;
 `
 
@@ -77,11 +76,13 @@ var notCurrentSlide = {
 }
 
 var left = {
-    left: '0'
+    left: '0',
+    marginLeft: '-20px'
 }
 
 var right = {
-  right: '0'
+  right: '0',
+  marginRight: '-20px'
 }
 
 
@@ -89,6 +90,7 @@ class ProductCarousel extends Component {
   constructor(props) {
     super(props)
 
+    //Bind functions so they can be used
     this.goToPrevSlide = this.prevSlide.bind(this)
     this.goToNextSlide = this.nextSlide.bind(this)
 
@@ -119,7 +121,7 @@ class ProductCarousel extends Component {
     e.preventDefault()
 
     let index = this.state.currentIndex
-    let slidesLength = slides.length - 1
+    let slidesLength = this.props.images.length - 1
 
     if (index === slidesLength) {
       index = -1;
@@ -149,7 +151,7 @@ class ProductCarousel extends Component {
                       </CarouselSlide>
                 )}
             </Slides>
-            <RightArrow onClick={e => this.prevSlide(e)}>
+            <RightArrow onClick={e => this.nextSlide(e)}>
                 <i className='fa fa-chevron-right' />
             </RightArrow>
           </Carousel>

@@ -17,7 +17,7 @@ import ProductCarousel from './ProductCarousel'
 
 //Styles
 const ImgContainer = styled.div`
-  max-width: 500px;
+  max-width: 450px;
   height: 500px;
   order: 0;
   display: flex;
