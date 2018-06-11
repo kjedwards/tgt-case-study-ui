@@ -1,0 +1,30 @@
+#TTC example
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: case-study-ui-ingress
+  labels:
+    name: case-study-ui-ingress
+spec:
+  rules:
+  - host: case-study-ui.us-central-1.test.core.k8s.tgt
+    http:
+      paths:
+      - backend:
+          serviceName: case-study-ui-service
+          servicePort: 443
+        path: /
+  - host: case-study-ui.us-central-1ttc.core.k8s.tgt
+    http:
+      paths:
+      - backend:
+          serviceName: case-study-ui-service
+          servicePort: 443
+        path: /
+  - host: case-study-ui.us-central-1tte.core.k8s.tgt
+    http:
+      paths:
+      - backend:
+          serviceName: case-study-ui-service
+          servicePort: 443
+        path: /

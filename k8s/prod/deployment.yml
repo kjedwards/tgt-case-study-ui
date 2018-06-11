@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: case-study-ui-deployment
+spec:
+  revisionHistoryLimit: 2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: case-study-ui-deployment
+    spec:
+      containers:
+      - name: case-study-ui
+        image: docker.target.com/path/to/image:DEPLOY_VERSION
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1024M
+          requests:
+            cpu: 10m
+            memory: 128M
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+          periodSeconds: 10
+          failureThreshold: 3
