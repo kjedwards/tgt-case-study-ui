@@ -29,12 +29,10 @@ class BuyButtonContainer extends Component {
 
       return(
         <Container>
-              <BuyButton render={renderPickup} type='pickup'></BuyButton>
-              <BuyButton render={renderAddCart} type='cart'></BuyButton>
-
               { !renderPickup && !renderAddCart ?
                 <p>Item Unavailable</p> : null }
-
+              <BuyButton render={renderPickup} type='pickup'></BuyButton>
+              <BuyButton render={renderAddCart} type='cart'></BuyButton>
         </Container>
       )
     }
