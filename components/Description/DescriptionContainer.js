@@ -20,12 +20,10 @@ import ShareContainer from './ShareContainer'
 import ProductHighlights from './ProductHighlights'
 
 const DescContainer = styled.div`
-  min-width: 400px;
-  max-width: 500px;
-  width: 50%;
   order: 2;
   display: flex;
   flex-direction: column;
+  max-width: 300px;
 
   @media(max-width: ${SIZES.TABLET}) {
     order: 1;
@@ -40,10 +38,10 @@ class DescriptionContainer extends Component {
           <Price offer={this.props.offer}></Price>
           <Promotions promos={this.props.promo}></Promotions>
           <Quantity></Quantity>
-          <BuyButtonContainer></BuyButtonContainer>
+          <BuyButtonContainer channelCode={this.props.channelCode}></BuyButtonContainer>
           <Returns></Returns>
           <ShareContainer></ShareContainer>
-          <ProductHighlights></ProductHighlights>
+          <ProductHighlights highlights={this.props.highlights}></ProductHighlights>
         </DescContainer>
       )
     }

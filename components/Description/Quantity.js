@@ -41,17 +41,40 @@ const Amount = styled.div`
 
 
 class Quantity extends Component {
+    constructor(props) {
+      super(props)
+
+      this.upQuantity = this.upQuantity.bind(this)
+      this.downQuantity = this.downQuantity.bind(this)
+
+      this.state = { quantity: 1 }
+    }
+
+    downQuantity(e) {
+      if(this.state.quantity > 1){
+        var quantity = this.state.quantity
+        quantity--
+        this.setState({quantity: quantity})
+      }
+    }
+
+    upQuantity(e) {
+      var quantity = this.state.quantity
+      quantity++
+      this.setState({quantity: quantity})
+    }
+
     render () {
       return(
         <Container>
           <Text>quantity:</Text>
           <PlusMinusContainer>
-            <Button>
-              <i className='fa fa-plus-circle' />
-            </Button>
-            <Amount> 1 </Amount>
-            <Button>
+            <Button onClick={e => this.downQuantity(e)}>
               <i className='fa fa-minus-circle' />
+            </Button>
+            <Amount> {this.state.quantity} </Amount>
+            <Button onClick={e => this.upQuantity(e)}>
+              <i className='fa fa-plus-circle' />
             </Button>
           </PlusMinusContainer>
         </Container>

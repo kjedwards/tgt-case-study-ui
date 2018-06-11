@@ -26,8 +26,8 @@ const Carousel = styled.div`
 `
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 `
 
 const Slides = styled.ul`
@@ -187,7 +187,6 @@ class RightArrow extends Component {
 
 class CarouselSlide extends Component {
   render() {
-    console.log(this.props)
     return (
       <Slide
         style={ this.props.index == this.props.activeIndex

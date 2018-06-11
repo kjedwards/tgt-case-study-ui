@@ -21,9 +21,9 @@ class ShareContainer extends Component {
     render () {
       return(
         <Container>
-          <ShareButton></ShareButton>
-          <ShareButton></ShareButton>
-          <ShareButton></ShareButton>
+          <ShareButton text='ADD TO REGISTRY'></ShareButton>
+          <ShareButton text='ADD TO LIST'></ShareButton>
+          <ShareButton text='SHARE'></ShareButton>
         </Container>
       )
     }

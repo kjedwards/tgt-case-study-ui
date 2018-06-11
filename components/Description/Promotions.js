@@ -13,9 +13,9 @@ import 'font-awesome/css/font-awesome.min.css'
 
 const Container = styled.div`
   width: 100%;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  color: red;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  color: #e50909;
   display: flex;
   flex-direction: column;
   padding-top: 10px;

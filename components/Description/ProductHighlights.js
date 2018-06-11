@@ -29,18 +29,21 @@ const ListMember = styled.li`
 `
 
 class ProductHighlights extends Component {
+    constructor() {
+        super()
+        this.state = {
+          features: []
+        }
+    }
+
     render () {
       return(
         <Container>
           <Header>product highlights</Header>
           <List>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
-            <ListMember>Wattage Output: 1100 watts</ListMember>
+            {this.props.highlights.map((dataVal, i) =>
+              <ListMember key={i}>{dataVal.replace('<strong>', '').replace('</strong>', '')}</ListMember>
+            )}
           </List>
         </Container>
       )

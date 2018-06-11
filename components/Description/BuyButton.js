@@ -11,18 +11,36 @@ import styled, {css} from 'styled-components'
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   text-align: center;
   margin-right: 5px;
+  width: 100%;
 `
 
-const Button = styled.button`
-  background-color: red;
+const Pickup = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+`
+
+const PickupButton = styled.button`
+  background-color: #3a3a3a;
   padding: 5px 20px;
   color: white;
-  border-radius: 6px;
+  border-radius: 3px;
   border: 0px;
+  height: 30px;
+`
+
+const CartButton = styled.button`
+  background-color: #e50909;
+  padding: 5px 20px;
+  color: white;
+  border-radius: 3px;
+  border: 0px;
+  height: 30px;
+  flex-grow: 1;
 `
 
 const FindStore = styled.a`
@@ -36,8 +54,16 @@ class BuyButton extends Component {
     render () {
       return(
         <Container>
-          <Button>PICK UP IN STORE</Button>
-          <FindStore>find in a store</FindStore>
+          { this.props.render ?
+              this.props.type == 'pickup' ?
+                <Pickup>
+                  <PickupButton>PICK UP IN STORE</PickupButton>
+                  <FindStore>find in a store</FindStore>
+                </Pickup>
+                : <CartButton>ADD TO CART</CartButton>
+            : null
+          }
+
         </Container>
       )
     }

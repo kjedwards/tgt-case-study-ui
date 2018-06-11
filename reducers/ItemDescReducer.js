@@ -1,5 +1,5 @@
 /* -----------------------------------
- *  Reducer for getting the offers
+ *  Reducer for getting the item description
  *  from the API
  *
  *  Author: Kaylee Edwards (z0027hd)
@@ -8,59 +8,54 @@
  * ----------------------------------- */
 
  import {
-   GET_MISC_ATTR_BEGIN,
-   GET_MISC_ATTR_SUCCESS,
-   GET_MISC_ATTR_FAILURE
+   GET_ITEM_DESC_BEGIN,
+   GET_ITEM_DESC_SUCCESS,
+   GET_ITEM_DESC_FAILURE
  } from '../constants/ActionTypes'
 
  const initialState = {
    loading: true,
    error: null,
-   title: '',
-   purchasingChannelCode: -1
+   highlights: []
  }
 
- export default function MiscAttrReducer(state = initialState, action) {
+ export default function ItemDescReducer(state = initialState, action) {
     switch(action.type) {
-      case GET_MISC_ATTR_BEGIN: {
-        console.log(':::GET MISC ATTR BEGIN')
+      case GET_ITEM_DESC_BEGIN: {
+        console.log(':::GET ITEM_DESC BEGIN')
         return {
           ...state,
           loading: true,
           error: null,
-          title: '',
-          purchasingChannelCode: -1
+          highlights: []
         }
       }
-      case GET_MISC_ATTR_SUCCESS: {
-        console.log(':::GET MISC ATTR SUCCESS')
+      case GET_ITEM_DESC_SUCCESS: {
+        console.log(':::GET ITEM_DESC SUCCESS')
         if(action.payload === undefined) {
           return {
             ...state,
             loading: false,
             error: null,
-            title: '',
-            purchasingChannelCode: -1
+            highlights: []
           }
         } else {
           return {
             ...state,
             loading: false,
             error: null,
-            title: action.payload.miscAttr.title,
-            purchasingChannelCode: action.payload.miscAttr.purchasingChannelCode
+            highlights: action.payload.desc[0].features
           }
         }
       }
-      case GET_MISC_ATTR_FAILURE: {
-        console.log(':::GET MISC ATTR FAILURE')
+      case GET_ITEM_DESC_FAILURE: {
+        console.log(':::GET ITEM_DESC FAILURE')
         console.log(action.payload.error)
           return {
             ...state,
             loading: false,
             error: action.payload.error,
-            title: '',
-            purchasingChannelCode: -1
+            highlights: []
         }
       }
       default:

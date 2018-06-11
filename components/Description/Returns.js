@@ -31,7 +31,12 @@ class Returns extends Component {
       return(
         <Container>
           <LabelText>returns</LabelText>
-          <DescText>These are some instructions for returning merchandise.</DescText>
+          <DescText>
+            This item must be returned within 30 days of
+            the ship date. See <b>return policy</b> for details.
+            Prices, promotions, styles, and availability may
+            vary by store and online.
+          </DescText>
         </Container>
       )
     }

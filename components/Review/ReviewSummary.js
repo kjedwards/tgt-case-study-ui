@@ -14,7 +14,8 @@ import Review from './Review'
 
 const RvwSummary = styled.div`
   background-color: #f7f7f7;
-  width:100%;
+  min-width: 400px;
+  max-width: 500px;
 `
 
 const RvwHolder = styled.div`

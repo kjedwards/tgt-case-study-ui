@@ -6,6 +6,7 @@ import ProsReducer from './ProsReducer'
 import ConsReducer from './ConsReducer'
 import OffersReducer from './OffersReducer'
 import PromotionsReducer from './PromotionsReducer'
+import ItemDescReducer from './ItemDescReducer'
 
 const rootReducer = combineReducers({
   images: ImageReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   pro: ProsReducer,
   con: ConsReducer,
   offers: OffersReducer,
-  promos: PromotionsReducer
+  promos: PromotionsReducer,
+  desc: ItemDescReducer
 })
 
 export default rootReducer

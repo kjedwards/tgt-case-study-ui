@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
 
     &:focus, &:hover, &:active {
         text-decoration: none;
-        color: red;
+        color: #e50909;
     }
 `;
 

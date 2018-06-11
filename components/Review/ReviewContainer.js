@@ -15,13 +15,11 @@ import ReviewTop from './ReviewTop'
 import ReviewSummary from './ReviewSummary'
 
 const RvwContainer = styled.div`
-  width: 40%;
-  min-width: 400px;
-  max-width: 500px;
   order: 1;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  max-width: 500px;
 
   @media(max-width: ${SIZES.TABLET}) {
     order: 2;

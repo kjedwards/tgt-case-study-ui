@@ -15,26 +15,16 @@ import ProductTitle from './ProductTitle'
 import ProductImage from './ProductImage'
 import ProductCarousel from './ProductCarousel'
 
-import { SIZES } from '../../constants/DeviceWidth'
-
 //Styles
 const ImgContainer = styled.div`
-  width: 40%;
+  max-width: 500px;
   height: 500px;
-  min-width: 400px;
   order: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
-  @media(max-width: ${SIZES.LAPTOP}) {
-      max-width: 400px;
-  }
-
-  @media(max-width: ${SIZES.DESKTOP}) {
-      max-width: 600px;
-  }
+  margin-bottom: 20px;
 `
 
 //Component

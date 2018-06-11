@@ -27,6 +27,7 @@ import { getPros } from '../actions/ProsActionCreator'
 import { getCons } from '../actions/ConsActionCreator'
 import { getOffers } from '../actions/OffersActionCreator'
 import { getPromotions } from '../actions/PromotionsActionCreator'
+import { getItemDesc } from '../actions/ItemDescActionCreator'
 
 
 const store = Store()
@@ -36,21 +37,17 @@ const AppContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   max-height: 900px;
-  max-width: 1600px;
-  margin: 10px;
-  justify-content: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
   font-family: sans-serif;
 
   @media(max-width: ${SIZES.TABLET}) {
     max-height: 10000px;
   }
 
-  @media(max-width: ${SIZES.LAPTOP}) {
-      max-width: 1200px;
-  }
-
-  @media(max-width: ${SIZES.DESKTOP}) {
-      max-width: 1600px;
+  @media(max-width: ${SIZES.MOBILE_LARGE}) {
+      max-width: 500px;
   }
 `
 const mapStateToProps = (state) => {
@@ -59,11 +56,13 @@ const mapStateToProps = (state) => {
     mainImage: state.images.mainImage,
     alternateImages: state.images.alternateImages,
     title: state.misc.title,
+    channelCode: state.misc.purchasingChannelCode,
     overallRating: state.overall,
     pro: state.pro,
     con: state.con,
     offer: state.offers,
-    promos: state.promos
+    promos: state.promos,
+    highlights: state.desc.highlights
   }
 }
 
@@ -76,7 +75,8 @@ const mapDispatchToProps = function(dispatch) {
     getPros: bindActionCreators(getPros, dispatch),
     getCons: bindActionCreators(getCons, dispatch),
     getOffers: bindActionCreators(getOffers, dispatch),
-    getPromotions: bindActionCreators(getPromotions, dispatch)
+    getPromotions: bindActionCreators(getPromotions, dispatch),
+    getItemDesc: bindActionCreators(getItemDesc, dispatch)
   }
 }
 
@@ -93,11 +93,11 @@ class App extends Component {
       this.props.getCons()
       this.props.getOffers()
       this.props.getPromotions()
+      this.props.getItemDesc()
     }
 
 
     render () {
-      console.log(this.props)
         return (
           <Provider store={store}>
           <AppContainer>
@@ -110,7 +110,9 @@ class App extends Component {
                               con = {this.props.con}>
             </ReviewContainer>
             <DescriptionContainer offer={this.props.offer}
-                                  promo={this.props.promos}>
+                                  promo={this.props.promos}
+                                  channelCode={this.props.channelCode}
+                                  highlights={this.props.highlights}>
 
             </DescriptionContainer>
           </AppContainer>

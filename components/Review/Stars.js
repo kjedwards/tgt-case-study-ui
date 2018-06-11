@@ -19,7 +19,7 @@ const Unchecked = styled.div`
 `
 
 const Checked = styled.div`
-  color: red;
+  color: #e50909;
 `
 
 class Stars extends Component {

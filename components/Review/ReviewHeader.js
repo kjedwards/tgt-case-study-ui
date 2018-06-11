@@ -15,7 +15,7 @@ import ConContainer from './ConContainer'
 const RvwHeader = styled.div`
   margin: 10px;
   height: 60px;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid lightgrey;
 `
 
 
