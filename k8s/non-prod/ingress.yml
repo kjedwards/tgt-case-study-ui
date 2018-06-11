@@ -1,0 +1,30 @@
+#TTC example
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: case-study-ui-ingress-DEPLOY_ENV
+  labels:
+    name: case-study-ui-ingress-DEPLOY_ENV
+spec:
+  rules:
+  - host: case-study-ui-DEPLOY_ENV.us-central-1.test.core.k8s.tgt
+    http:
+      paths:
+      - backend:
+          serviceName: case-study-ui-service-DEPLOY_ENV
+          servicePort: 443
+        path: /
+  - host: case-study-ui-DEPLOY_ENV.us-central-1ttc.test.core.k8s.tgt
+    http:
+      paths:
+      - backend:
+          serviceName: case-study-ui-service-DEPLOY_ENV
+          servicePort: 443
+        path: /
+  - host: case-study-ui-DEPLOY_ENV.us-central-1tte.test.core.k8s.tgt
+    http:
+      paths:
+      - backend:
+          serviceName: case-study-ui-service-DEPLOY_ENV
+          servicePort: 443
+        path: /

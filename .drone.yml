@@ -1,0 +1,157 @@
+#Sample drone yaml
+
+pipeline:
+  build-test:
+    when:
+      event: push
+      branch: test
+    image: docker.target.com/path/to/image:latest
+    pull: true
+    commands:
+      - npm install
+      - npm build #would set this up
+      - npm test
+
+  build-stage:
+    when:
+      event: push
+      branch: stage
+    image: docker.target.com/path/to/image:latest
+    commands:
+      - npm install
+      - npm build #would set this up
+
+  build-prod:
+    when:
+      event: push
+      branch: master
+    image: docker.target.com/path/to/image:latest
+    commands:
+      - npm install
+      - npm build #would set this up
+
+  docker-publish:
+    when:
+      event: push
+    image: plugins/docker
+    secrets: [ docker_username, docker_password ]
+    registry: docker.target.com/registry
+    repo: docker.target.com/path/to/image:latest
+    tag: "${DRONE_COMMIT:0:8}"
+
+  deploy-test-ttc:
+    when:
+      event: push
+      branch: test
+    group: deploy-test
+    image: target/drone-kubernetes:latest
+    pull: true
+    certificate_authority_url: http://browserconfig.target.com/tgt-certs/tgt-ca-bundle.crt
+    secrets: [ kube_config ]
+    context: mycluster-test-ttc
+    status:
+      - deployment/case-study-ui-deployment
+    filename:
+      - kubernetes/stage/ttc
+    images:
+      case-study-ui: docker.target.com/path/to/image:${DRONE_COMMIT:0:8}
+
+  deploy-test-tte:
+    when:
+      event: push
+      branch: test
+    group: deploy-test
+    image: target/drone-kubernetes:latest
+    pull: true
+    certificate_authority_url: http://browserconfig.target.com/tgt-certs/tgt-ca-bundle.crt
+    secrets: [ kube_config ]
+    context: my-cluster-test-ttc
+    status:
+      - deployment/case-study-ui-deployment
+    filename:
+      - kubernetes/stage/tte
+    images:
+      case-study-ui: docker.target.com/path/to/image:${DRONE_COMMIT:0:8}
+
+
+  deploy-stage-ttc:
+    when:
+      event: push
+      branch: stage
+    group: deploy-stage
+    image: target/drone-kubernetes:latest
+    pull: true
+    certificate_authority_url: http://browserconfig.target.com/tgt-certs/tgt-ca-bundle.crt
+    secrets: [ kube_config ]
+    context: mycluster-stage-ttc
+    status:
+      - deployment/case-study-ui-deployment
+    filename:
+      - kubernetes/stage/ttc
+    images:
+      case-study-ui: docker.target.com/path/to/image:${DRONE_COMMIT:0:8}
+
+  deploy-stage-tte:
+    when:
+      event: push
+      branch: stage
+    group: deploy-stage
+    image: target/drone-kubernetes:latest
+    pull: true
+    certificate_authority_url: http://browserconfig.target.com/tgt-certs/tgt-ca-bundle.crt
+    secrets: [ kube_config ]
+    context: my-cluster-stage-ttc
+    status:
+      - deployment/case-study-ui-deployment
+    filename:
+      - kubernetes/stage/tte
+    images:
+      case-study-ui: docker.target.com/path/to/image:${DRONE_COMMIT:0:8}
+
+  deploy-prod-ttc:
+    when:
+      event: push
+      branch: master
+    group: deploy-prod
+    image: target/drone-kubernetes:latest
+    pull: true
+    certificate_authority_url: http://browserconfig.target.com/tgt-certs/tgt-ca-bundle.crt
+    secrets: [ kube_config ]
+    context: my-cluster-prod-ttc
+    status:
+      - deployment/case-study-ui-deployment
+    filename:
+      - kubernetes/prod/ttc
+    images:
+    case-study-ui: docker.target.com/path/to/image:${DRONE_COMMIT:0:8}
+
+  deploy-prod-tte:
+    when:
+      event: push
+      branch: master
+    group: deploy-prod
+    image: target/drone-kubernetes:latest
+    pull: true
+    certificate_authority_url: http://browserconfig.target.com/tgt-certs/tgt-ca-bundle.crt
+    secrets: [ kube_config ]
+    context: my-cluster-prod-tte
+    status:
+      - deployment/case-study-ui-deployment
+    filename:
+      - kubernetes/prod/tte
+    images:
+      case-study-ui: docker.target.com/path/to/:${DRONE_COMMIT:0:8}
+
+  slack:
+    when:
+      event: push
+      status: [failure, success, error]
+    image: plugins/slack
+    channel: MyChannel
+    secrets: hooks.slack.com/mywebhook
+    template: >
+      {{#success build.status}}
+        Case Study Server build https://drone6.target.com/myorg/myrepo/{{build.number}} succeeded.
+      {{else}}
+        Case Study build https://drone6.target.com/myorg/myrepo/{{build.number}} failed.
+      {{/success}}
