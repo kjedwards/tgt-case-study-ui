@@ -26,6 +26,7 @@ const DescContainer = styled.div`
   max-width: 300px;
 
   @media(max-width: ${SIZES.TABLET}) {
+    max-width: 500px;
     order: 1;
   }
 `
