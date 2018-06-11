@@ -10,19 +10,17 @@ import React, {Component} from 'react';
 import styled, {css} from 'styled-components'
 import 'font-awesome/css/font-awesome.min.css'
 
-import { SIZES } from '../../constants/DeviceWidth'
-
 const CarouselContainer = styled.div`
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   min-height: 210px;
 `
+
 const Carousel = styled.div`
   position: relative;
   width: 350px;
-  height 100px;
+  height: 100px;
 `
 
 const Image = styled.img`
@@ -31,10 +29,10 @@ const Image = styled.img`
 `
 
 const Slides = styled.ul`
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
 `
 
 const Slide = styled.li`

@@ -19,10 +19,13 @@
   "homepage": "https://github.com/kjedwards/tgt-case-study-ui#readme",
   "dependencies": {
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "font-awesome-webpack": "0.0.5-beta.2",
     "jest": "^23.1.0",
+    "jest-enzyme": "^6.0.1",
     "less": "^3.0.4",
     "null-loader": "^0.1.1",
     "pure-react-carousel": "^1.12.3",
@@ -63,5 +66,8 @@
     "plugins": [
       "transform-object-rest-spread"
     ]
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./setupTests.js"
   }
 }

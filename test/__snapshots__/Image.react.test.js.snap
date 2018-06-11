@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductImage Component ENZYME snapshot 1`] = `
+<ProductImage>
+  <styled.div>
+    <div
+      className="sc-bdVaJa eOogis"
+    >
+      <styled.img>
+        <img
+          className="sc-bwzfXH canjnE"
+        />
+      </styled.img>
+    </div>
+  </styled.div>
+</ProductImage>
+`;
+
+exports[`ProductImage Component RENDERER snapshot 1`] = `
+<div
+  className="sc-bdVaJa eOogis"
+>
+  <img
+    className="sc-bwzfXH canjnE"
+  />
+</div>
+`;
+
+exports[`ProductTitle Component ENZYME snapshot 1`] = `
+<ProductTitle>
+  <styled.div>
+    <div
+      className="sc-htpNat dtIfKB"
+    />
+  </styled.div>
+</ProductTitle>
+`;
+
+exports[`ProductTitle Component RENDERER snapshot 1`] = `
+<div
+  className="sc-htpNat dtIfKB"
+/>
+`;
